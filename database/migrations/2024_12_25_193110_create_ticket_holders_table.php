@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_lines', function (Blueprint $table) {
+        Schema::create('ticket_holders', function (Blueprint $table) {
             $table->uuid('id')->primary()->unique();
-            $table->foreignUuid('order_id')->constrained('orders')->cascadeOnDelete();
-            $table->foreignUuid('ticket_id')->nullable()->constrained('tickets')->nullOnDelete();
+            $table->foreignUuid('order_line_id')->constrained()->cascadeOnDelete();
 
-            $table->string('ticket_name');
-            $table->unsignedInteger('ticket_price');
-            $table->integer('quantity');
+            $table->string('name');
+            $table->string('email')->nullable();
+            $table->string('status')->default('pending');
 
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_lines');
+        Schema::dropIfExists('ticket_holders');
     }
 };
