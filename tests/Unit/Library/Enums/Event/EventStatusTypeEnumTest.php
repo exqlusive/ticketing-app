@@ -2,14 +2,14 @@
 
 namespace Tests\Unit\Library\Enums\Event;
 
+use App\Library\Enums\Event\EventStatusTypeEnum;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use App\Library\Enums\Event\EventStatusTypeEnum;
 
 class EventStatusTypeEnumTest extends TestCase
 {
     #[Test]
-    public function testDisplayName(): void
+    public function test_display_name(): void
     {
         $this->assertEquals('Cancelled', EventStatusTypeEnum::CANCELLED->displayName());
         $this->assertEquals('Draft', EventStatusTypeEnum::DRAFT->displayName());
@@ -20,7 +20,7 @@ class EventStatusTypeEnumTest extends TestCase
     }
 
     #[Test]
-    public function testIsActive(): void
+    public function test_is_active(): void
     {
         $this->assertFalse(EventStatusTypeEnum::CANCELLED->isActive());
         $this->assertFalse(EventStatusTypeEnum::DRAFT->isActive());
@@ -31,7 +31,7 @@ class EventStatusTypeEnumTest extends TestCase
     }
 
     #[Test]
-    public function testActiveStatuses(): void
+    public function test_active_statuses(): void
     {
         $expected = [
             EventStatusTypeEnum::PUBLISHED->value,

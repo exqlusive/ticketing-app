@@ -32,7 +32,7 @@ class OrganizationController extends Controller
     {
         $organization = Organization::find($id);
 
-        if (!$organization) {
+        if (! $organization) {
             return not_found();
         }
 

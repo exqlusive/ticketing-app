@@ -12,7 +12,9 @@ use Tests\Feature\TestCase;
 class EventTest extends TestCase
 {
     const START_DATE = '2024-12-12';
+
     const END_DATE = '2024-12-22';
+
     const WRONG_END_DATE = '2023-12-22';
 
     #[Test]
