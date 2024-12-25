@@ -3,6 +3,7 @@
 namespace App\Models\Event;
 
 use App\Models\Organization\Organization;
+use App\Models\Ticket\Ticket;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -18,11 +19,15 @@ class Event extends Model
      * {@inheritdoc}
      */
     protected $fillable = [
+        'organization_id',
+        'slug',
         'name',
         'description',
         'start_date',
         'end_date',
+        'total_capacity',
         'location',
+        'status',
     ];
 
     /**
@@ -78,5 +83,10 @@ class Event extends Model
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    public function tickets(): HasMany
+    {
+        return $this->hasMany(Ticket::class);
     }
 }

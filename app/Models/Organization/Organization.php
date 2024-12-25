@@ -2,10 +2,12 @@
 
 namespace App\Models\Organization;
 
+use App\Models\Event\Event;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
 class Organization extends Model
@@ -60,5 +62,13 @@ class Organization extends Model
             ->using(OrganizationUser::class)
             ->withPivot('id', 'role_id')
             ->withTimestamps();
+    }
+
+    /**
+     * Get the events that belong to the organization.
+     */
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class);
     }
 }
