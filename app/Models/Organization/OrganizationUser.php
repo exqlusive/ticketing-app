@@ -9,5 +9,8 @@ class OrganizationUser extends Pivot
 {
     use HasUuids;
 
+    /**
+     * {@inheritdoc}
+     */
     protected $table = 'organization_user';
 }
