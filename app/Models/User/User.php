@@ -11,12 +11,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\User\UserFactory> */
-    use HasFactory, HasRoles, HasUuids, Notifiable;
+    use HasApiTokens, HasFactory, HasRoles, HasUuids, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -24,9 +25,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'is_organizer',
     ];
 
     /**
@@ -69,5 +72,13 @@ class User extends Authenticatable
     public function ticketReservations(): HasMany
     {
         return $this->hasMany(TicketReservation::class);
+    }
+
+    /**
+     * Check if the user is an organizer.
+     */
+    public function isOrganizer(): bool
+    {
+        return $this->is_organizer;
     }
 }

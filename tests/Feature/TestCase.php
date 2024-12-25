@@ -1,36 +1,23 @@
 <?php
 
-namespace Tests;
+namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Queue;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Testing\TestResponse;
-use OwowAgency\Snapshots\MatchesSnapshots;
+use Tests\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    use MatchesSnapshots, RefreshDatabase;
-
     /**
-     * Should seed
-     */
-    protected $seed = true;
-
-    /**
-     * Setup the test environment.
+     * Set up the test
      */
     protected function setUp(): void
     {
         parent::setUp();
 
-        Storage::fake('public');
-
-        Queue::fake();
-
-        Notification::fake();
+        config([
+            'auth.throttle_max_attempts' => 3,
+            'auth.login_throttle_max_attempts' => 2,
+        ]);
     }
 
     /**
