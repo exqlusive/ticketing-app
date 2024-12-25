@@ -20,43 +20,47 @@ class OrganizationController extends Controller
      */
     public function index(): JsonResponse
     {
-        $users = Organization::paginate(100);
+        $organizations = Organization::paginate(100);
 
-        return ok(OrganizationResource::collection($users)->response()->getData(true));
+        return ok(OrganizationResource::collection($organizations)->response()->getData(true));
     }
 
     /**
-     * Get a user by id
+     * Get an organization by id
      */
     public function show(string $id): JsonResponse
     {
-        $user = Organization::findOrFail($id);
+        $organization = Organization::find($id);
 
-        return ok(new OrganizationResource($user));
+        if (!$organization) {
+            return not_found();
+        }
+
+        return ok(new OrganizationResource($organization));
     }
 
     /**
-     * Create a new user
+     * Create a new organization
      *
      * @throws \Exception
      */
     public function store(OrganizationStoreRequest $request): JsonResponse
     {
-        $user = $this->organization->create($request->validated());
+        $organization = $this->organization->create($request->validated());
 
-        return ok(new OrganizationResource($user));
+        return ok(new OrganizationResource($organization));
     }
 
     /**
-     * Update a user
+     * Update a organization
      *
      * @throws \Exception
      */
     public function update(OrganizationStoreRequest $request, string $id): JsonResponse
     {
-        $user = Organization::findOrFail($id);
-        $user->update($request->validated());
+        $organization = Organization::findOrFail($id);
+        $organization->update($request->validated());
 
-        return ok(new OrganizationResource($user));
+        return ok(new OrganizationResource($organization));
     }
 }

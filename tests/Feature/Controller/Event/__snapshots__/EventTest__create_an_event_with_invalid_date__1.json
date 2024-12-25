@@ -1,0 +1,8 @@
+{
+    "message": "The end date field must be a date after or equal to start date.",
+    "errors": {
+        "end_date": [
+            "The end date field must be a date after or equal to start date."
+        ]
+    }
+}

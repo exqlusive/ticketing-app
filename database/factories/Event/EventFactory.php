@@ -17,7 +17,13 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'organization_id' => \App\Models\Organization\Organization::factory(),
+            'name' => fake()->sentence(),
+            'description' => fake()->paragraph(),
+            'start_date' => now(),
+            'end_date' => now()->addDays(),
+            'venue' => fake()->company(),
+            'address' => fake()->address(),
         ];
     }
 }
