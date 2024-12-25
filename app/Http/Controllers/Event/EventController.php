@@ -32,7 +32,7 @@ class EventController extends Controller
     {
         $event = Event::with('organization')->find($id);
 
-        if (!$event) {
+        if (! $event) {
             return not_found();
         }
 

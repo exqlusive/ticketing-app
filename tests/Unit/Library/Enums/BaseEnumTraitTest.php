@@ -21,7 +21,7 @@ enum DummyEnum: string
 class BaseEnumTraitTest extends TestCase
 {
     #[Test]
-    public function testValues(): void
+    public function test_values(): void
     {
         $expectedValues = ['first', 'second', 'third'];
 
@@ -29,7 +29,7 @@ class BaseEnumTraitTest extends TestCase
     }
 
     #[Test]
-    public function testNames(): void
+    public function test_names(): void
     {
         $expectedNames = ['FIRST', 'SECOND', 'THIRD'];
 
