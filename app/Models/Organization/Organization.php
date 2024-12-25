@@ -10,6 +10,20 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
+/**
+ * @property mixed $id
+ * @property mixed name
+ * @property mixed slug
+ * @property mixed email
+ * @property mixed phone
+ * @property mixed address
+ * @property mixed city
+ * @property mixed state
+ * @property mixed postal_code
+ * @property mixed country
+ * @property mixed created_at
+ * @property mixed updated_at
+ */
 class Organization extends Model
 {
     use HasFactory, HasUuids;

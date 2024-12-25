@@ -1,11 +1,8 @@
 {
-    "message": "The email field must be a valid email address. (and 1 more error)",
+    "message": "The email field must be a valid email address.",
     "errors": {
         "email": [
             "The email field must be a valid email address."
-        ],
-        "password": [
-            "The password field must be at least 8 characters."
         ]
     }
 }
