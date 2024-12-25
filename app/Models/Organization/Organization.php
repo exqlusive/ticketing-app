@@ -12,6 +12,9 @@ class Organization extends Model
 {
     use HasFactory, HasUuids;
 
+    /**
+     * {@inheritdoc}
+     */
     protected $fillable = [
         'name',
     ];
@@ -21,13 +24,13 @@ class Organization extends Model
      */
     protected static function boot(): void
     {
-        parent::boot();
-
         static::saving(function ($organization) {
             if (empty($organization->slug)) {
                 $organization->slug = static::generateUniqueSlug($organization->name);
             }
         });
+
+        parent::boot();
     }
 
     /**
@@ -35,7 +38,7 @@ class Organization extends Model
      */
     protected static function generateUniqueSlug(string $name): string
     {
-        $slug = Str::slug($name); // Base slug
+        $slug = Str::slug($name);
         $originalSlug = $slug;
         $count = 1;
 
