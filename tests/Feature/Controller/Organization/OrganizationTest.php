@@ -3,6 +3,7 @@
 namespace Tests\Feature\Controller\Organization;
 
 use App\Models\Organization\Organization;
+use Illuminate\Support\Str;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\TestCase;
 
@@ -19,6 +20,38 @@ class OrganizationTest extends TestCase
             'city' => fake()->city(),
             'postal_code' => fake()->postcode(),
             'country' => fake()->countryCode(),
+        ]);
+
+        $response->assertStatus(200);
+
+        $this->assertResponse($response, 200, false);
+    }
+
+    #[Test]
+    public function create_an_organization_with_the_same_name(): void
+    {
+        $this->postJson('/api/organizations', [
+            'name' => $name = fake()->firstName(),
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->lastName(),
+            'address' => fake()->address(),
+            'city' => fake()->city(),
+            'postal_code' => fake()->postcode(),
+            'country' => fake()->countryCode(),
+        ]);
+
+        $response = $this->postJson('/api/organizations', [
+            'name' => $name,
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->lastName(),
+            'address' => fake()->address(),
+            'city' => fake()->city(),
+            'postal_code' => fake()->postcode(),
+            'country' => fake()->countryCode(),
+        ]);
+
+        $response->assertJson([
+            'slug' => Str::slug($name.'-1'),
         ]);
 
         $response->assertStatus(200);
