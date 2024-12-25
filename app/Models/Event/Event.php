@@ -11,6 +11,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 
+/**
+ * @property mixed $id
+ * @property mixed $name
+ * @property mixed $slug
+ * @property mixed $description
+ * @property mixed $start_date
+ * @property mixed $end_date
+ * @property mixed $venue
+ * @property mixed $address
+ * @property mixed $status
+ * @property mixed $created_at
+ * @property mixed $updated_at
+ */
 class Event extends Model
 {
     use HasFactory, HasUuids;

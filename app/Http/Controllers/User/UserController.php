@@ -30,7 +30,11 @@ class UserController extends Controller
      */
     public function show(string $id): JsonResponse
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
+
+        if (!$user) {
+            return not_found();
+        }
 
         return ok(new UserResource($user));
     }
