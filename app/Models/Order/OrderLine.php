@@ -3,8 +3,10 @@
 namespace App\Models\Order;
 
 use App\Models\Ticket\Ticket;
+use App\Models\Ticket\TicketHolder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class OrderLine extends Model
 {
@@ -41,5 +43,13 @@ class OrderLine extends Model
     public function ticket(): BelongsTo
     {
         return $this->belongsTo(Ticket::class);
+    }
+
+    /**
+     * Get the ticket holders for the order line.
+     */
+    public function ticketHolders(): HasMany
+    {
+        return $this->hasMany(TicketHolder::class);
     }
 }
