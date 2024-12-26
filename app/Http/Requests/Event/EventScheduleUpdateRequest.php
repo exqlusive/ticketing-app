@@ -27,7 +27,7 @@ class EventScheduleUpdateRequest extends FormRequest
     public function withValidator($validator): void
     {
         $validator->after(function ($validator) {
-            $event = $this->route('id') ? Event::find($this->route('id')) : null;
+            $event = $this->route('event') ? $this->route('event') : null;
             $scheduleId = $this->route('scheduleId');
 
             if (! $event) {

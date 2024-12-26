@@ -58,9 +58,9 @@ class EventScheduleTest extends TestCase
 
         $response = $this->postJson('/api/events/1/schedules', $data);
 
-        $response->assertStatus(422);
+        $response->assertStatus(404);
 
-        $this->assertResponse($response, 422);
+        $this->assertResponse($response, 404);
     }
 
     #[Test]
@@ -203,9 +203,9 @@ class EventScheduleTest extends TestCase
 
         $response = $this->putJson('/api/events/1/schedules/1', $data);
 
-        $response->assertStatus(422);
+        $response->assertStatus(404);
 
-        $this->assertResponse($response, 422);
+        $this->assertResponse($response, 404);
     }
 
     public function update_event_schedule_where_schedule_is_not_found(): void
@@ -273,7 +273,7 @@ class EventScheduleTest extends TestCase
     }
 
     #[Test]
-    public function get_a_event_schedule(): void
+    public function get_an_event_schedule(): void
     {
         $event = Event::factory()->create();
         $schedule = $event->schedules()->create([
