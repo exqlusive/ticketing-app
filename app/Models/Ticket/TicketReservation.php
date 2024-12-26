@@ -2,6 +2,7 @@
 
 namespace App\Models\Ticket;
 
+use App\Models\Event\EventTicket;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +29,7 @@ class TicketReservation extends Model
      */
     public function ticket(): BelongsTo
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo(EventTicket::class);
     }
 
     /**

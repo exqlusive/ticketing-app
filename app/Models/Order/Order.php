@@ -3,7 +3,7 @@
 namespace App\Models\Order;
 
 use App\Models\Event\Event;
-use App\Models\Ticket\Ticket;
+use App\Models\Event\EventTicket;
 use App\Models\User\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
@@ -55,7 +55,7 @@ class Order extends Model
      */
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(EventTicket::class);
     }
 
     /**

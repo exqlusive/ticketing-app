@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Event\Event;
-use App\Models\Ticket\Ticket;
+use App\Models\Event\EventTicket;
 use Illuminate\Database\Seeder;
 
 class TicketSeeder extends Seeder
@@ -15,7 +15,7 @@ class TicketSeeder extends Seeder
     {
         $event = Event::first();
 
-        Ticket::updateOrCreate(
+        EventTicket::updateOrCreate(
             ['event_id' => $event->id, 'type' => 'VIP'],
             [
                 'event_id' => $event->id,
@@ -30,7 +30,7 @@ class TicketSeeder extends Seeder
             ]
         );
 
-        Ticket::updateOrCreate(
+        EventTicket::updateOrCreate(
             ['event_id' => $event->id, 'type' => 'Regular'],
             [
                 'event_id' => $event->id,

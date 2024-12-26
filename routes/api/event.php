@@ -1,14 +1,14 @@
 <?php
 
 use App\Http\Controllers\Event\EventController;
+use App\Http\Controllers\Event\EventScheduleController;
+use App\Http\Controllers\Event\EventTicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('events', EventController::class);
 
-Route::prefix('events/{id}/schedules')->group(function () {
-    Route::get('/', [EventController::class, 'schedule']);
-    Route::post('/', [EventController::class, 'storeSchedule']);
+Route::resource('events.schedules', EventScheduleController::class)
+    ->except(['destroy']);
 
-    Route::get('/{scheduleId}', [EventController::class, 'showSchedule']);
-    Route::put('/{scheduleId}', [EventController::class, 'updateSchedule']);
-});
+Route::resource('events.tickets', EventTicketController::class)
+    ->except(['destroy']);

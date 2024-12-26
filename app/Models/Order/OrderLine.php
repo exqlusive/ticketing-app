@@ -2,7 +2,7 @@
 
 namespace App\Models\Order;
 
-use App\Models\Ticket\Ticket;
+use App\Models\Event\EventTicket;
 use App\Models\Ticket\TicketHolder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -42,7 +42,7 @@ class OrderLine extends Model
      */
     public function ticket(): BelongsTo
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsTo(EventTicket::class);
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App\Models\Event;
 
 use App\Models\Organization\Organization;
-use App\Models\Ticket\Ticket;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -24,6 +23,7 @@ use Illuminate\Support\Str;
  * @property mixed $created_at
  * @property mixed $updated_at
  * @property mixed $organization_id
+ * @property mixed $tickets
  */
 class Event extends Model
 {
@@ -101,6 +101,6 @@ class Event extends Model
 
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasMany(EventTicket::class);
     }
 }
