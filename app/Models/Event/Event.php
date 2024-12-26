@@ -23,6 +23,7 @@ use Illuminate\Support\Str;
  * @property mixed $status
  * @property mixed $created_at
  * @property mixed $updated_at
+ * @property mixed $organization_id
  */
 class Event extends Model
 {
@@ -47,8 +48,8 @@ class Event extends Model
      * {@inheritdoc}
      */
     protected $casts = [
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
+        'start_date' => 'date',
+        'end_date' => 'date',
     ];
 
     /**

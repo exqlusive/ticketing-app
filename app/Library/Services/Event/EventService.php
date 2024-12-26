@@ -7,7 +7,7 @@ use App\Models\Event\Event;
 readonly class EventService
 {
     /**
-     * Create a new organization.
+     * Create a new event.
      *
      * @throws \Exception
      */
