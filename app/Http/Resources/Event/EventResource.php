@@ -19,6 +19,7 @@ class EventResource extends JsonResource
         /** @var Event $this */
         return [
             'id' => $this->id,
+            'organization_id' => $this->organization_id,
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
@@ -29,6 +30,7 @@ class EventResource extends JsonResource
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'schedule' => EventScheduleResource::collection($this->whenLoaded('schedules')),
             'organization' => new OrganizationResource($this->whenLoaded('organization')),
         ];
     }

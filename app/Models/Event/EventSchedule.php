@@ -2,11 +2,26 @@
 
 namespace App\Models\Event;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property mixed $id
+ * @property mixed $date
+ * @property mixed $start_time
+ * @property mixed $end_time
+ * @property mixed $created_at
+ * @property mixed $updated_at
+ * @property mixed $event_id
+ *
+ * @method whenLoaded(string $string)
+ */
 class EventSchedule extends Model
 {
+    use HasFactory, HasUuids;
+
     /**
      * {@inheritdoc}
      */
@@ -21,9 +36,9 @@ class EventSchedule extends Model
      * {@inheritdoc}
      */
     protected $casts = [
-        'date' => 'date',
-        'start_time' => 'time',
-        'end_time' => 'time',
+        'date' => 'string',
+        'start_time' => 'string',
+        'end_time' => 'string',
     ];
 
     /**

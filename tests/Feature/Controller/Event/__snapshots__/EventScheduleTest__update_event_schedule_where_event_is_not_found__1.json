@@ -1,0 +1,8 @@
+{
+    "message": "The specified event does not exist.",
+    "errors": {
+        "event_id": [
+            "The specified event does not exist."
+        ]
+    }
+}

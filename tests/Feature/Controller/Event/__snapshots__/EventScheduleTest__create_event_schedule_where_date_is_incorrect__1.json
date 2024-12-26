@@ -1,0 +1,8 @@
+{
+    "message": "The date must fall within the event dates (2024-12-25 to 2024-12-27).",
+    "errors": {
+        "0.date": [
+            "The date must fall within the event dates (2024-12-25 to 2024-12-27)."
+        ]
+    }
+}
